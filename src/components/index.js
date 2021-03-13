@@ -11,10 +11,10 @@ function FeedPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (list) return;
     dispatch(getMoreList({page: 1, ord: "asc", category: ["1", "2", "3"], limit: 10}));
-  }, [dispatch]);
-  console.log(list.data);
-  
+  }, [list, dispatch]);
+
   if (loading.GET_LIST) return <div>로딩중...</div>
   return (
     <div className="container">
@@ -22,7 +22,7 @@ function FeedPage() {
         <LoginBtn />
       </div>
       <div className="content_container">
-        <Category />
+        {list?.data && list.data.map(item => <Category key={item.id} item={item}/>)}
         <Advertise />
       </div>
     </div>

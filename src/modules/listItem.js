@@ -31,36 +31,6 @@ export const getMoreList = (payload) => async dispatch => {
   }
 }
 
-// function listItem (state = initialList, action) {
-//   switch(action.type) {
-//     case GET_MORE_LIST:
-//       return {
-//         ...state,
-//         loading: {
-//           ...state.loading,
-//           GET_LIST: true
-//         }
-//       }
-//     case GET_MORE_LIST_SUCCESS:
-//       return {
-//         ...state,
-//         loading: {
-//           ...state.loading,
-//           GET_LIST: false
-//         }
-//       }
-//     case GET_MORE_LIST_FAILURE:
-//       return {
-//         ...state,
-//         loading: {
-//           GET_LIST: false
-//         }
-//       }
-//     default:
-//       return {...state};
-//   }
-// }
-
 const listItem = handleActions(
   {
     [GET_MORE_LIST]: state => ({

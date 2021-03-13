@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getList = async (payload) => await axios.get('https://problem.comento.kr/api/list', {params: payload});
+export const getList = (payload) => axios.get('https://problem.comento.kr/api/list', {params: payload});
 
 export const getAds = () => axios.get('https://problem.comento.kr/api/ads', {params: {page: 1, limit: 2}});
 
