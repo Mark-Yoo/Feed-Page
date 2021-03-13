@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+}
+.nav_container {
+  background: yellowgreen;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+.content_container {
+  flex-grow: 6;
+}

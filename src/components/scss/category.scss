@@ -1,0 +1,11 @@
+.category_container {
+  background: pink;
+}
+.category_info {
+  display: flex;
+  background: orange;
+  justify-content: space-between;
+}
+.user_id::after {
+  content: " | ";
+}
