@@ -1,5 +1,7 @@
 .category_container {
   background: pink;
+  margin: 20px;
+  padding: 10px; 
 }
 .category_info {
   display: flex;
@@ -8,4 +10,15 @@
 }
 .user_id::after {
   content: " | ";
+}
+.category_post {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  .category_title {
+    flex-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 30px;
+  }
 }

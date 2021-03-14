@@ -1,4 +1,5 @@
 import React from 'react';
+import './scss/advertise.scss';
 
 function Advertise() {
   return(

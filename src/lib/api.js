@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getList = (payload) => axios.get('https://problem.comento.kr/api/list', {params: payload});
 
-export const getAds = () => axios.get('https://problem.comento.kr/api/ads', {params: {page: 1, limit: 2}});
+export const getAds = (payload) => axios.get('https://problem.comento.kr/api/ads', {params: payload});
 
 export const getCategory = () => axios.get('https://problem.comento.kr/api/category');
 

@@ -1,0 +1,63 @@
+.modal_overlay {
+  box-sizing: border-box;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  background-color: rgba(76, 76, 76, 0.9);
+  .modal_wrapper {
+    box-sizing: border-box;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: auto;
+    outline: 0;
+    .modal_category {
+      box-sizing: border-box;
+      position: relative;
+      background-color: #fff;
+      width: 400px;
+      height: 250px;
+      max-width: 500px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0 auto;
+      padding: 40px 20px;
+      .modal__close {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        border: 0;
+        background:rgba(0, 0, 0, 0);
+        &::before {
+          transform: rotate(45deg);
+        }
+        &::after {
+          transform: rotate(-45deg);
+        }
+        &::before, &::after {
+          position: absolute;
+          content: '';
+          height: 28px;
+          width: 2px;
+          background-color: #333;
+        }
+      }
+      .category_wrapper {
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        div {
+          margin: 3px;
+        }
+      }
+    }
+  }
+}

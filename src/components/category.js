@@ -14,8 +14,10 @@ function Category({item}) {
         <span className="user_id user__inner">{user_id}</span>
         <span className="created_date user__inner">{created_at}</span>
       </div>
-      <h2 className="category_title">{title}</h2>
-      <p className="category_content">{contents}</p>
+      <div className="category_post">
+        <h2 className="category_title">{title}</h2>
+        <p className="category_content">{contents}</p>
+      </div>
     </article>
   );
 }
