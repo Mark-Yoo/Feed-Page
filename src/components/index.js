@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMoreList } from '../modules/listItem';
 import { getMoreAds } from '../modules/listAds';
@@ -12,6 +12,8 @@ import FilterBtn from './filterBtn';
 function FeedPage() {
   const {list, listLoading} = useSelector(state => state.listItem);
   const {ads, adsLoading} = useSelector(state => state.listAds);
+  const [count, setCount] = useState(4);
+
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -36,8 +38,9 @@ function FeedPage() {
           <AlignBtn />
           <FilterBtn />
         </div>
-        {list?.data && list.data.map(item => <Category key={item.id} item={item}/>)}
-        {ads?.data && ads.data.map(ad => <Advertise key={ad.id}/>)}
+        {/* {list?.data && list.data.map(item => <Category key={item.id} item={item}/>)}
+        {ads?.data && ads.data.map(ad => <Advertise key={ad.id}/>)} */}
+        {list?.data && list.data.map((item, index) => index === 0 || index % count !== 3 ? <Category key={item.id} item={item}/> : <><Category key={item.id} item={item}/><Advertise index={index} count={count}/></>)}
       </div>
     </div>
   );

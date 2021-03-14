@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './scss/advertise.scss';
 
-function Advertise() {
+function Advertise({ index, count }) {
+  const {ads, adsLoading} = useSelector(state => state.listAds);
+  const [adIndex, setAdsIndex] = useState(Math.floor(index / count));
+  const [adsNow, setAdsNow] = useState(ads.data[adIndex]);
+  const [imgRoute, setImgRoute] = useState('https://cdn.comento.kr/assignment/');
+
   return(
-    <article className="sponsor_container">
-      <div>sponsored</div>
-      <div>
-        <img src="" alt="광고 이미지" />
-        <h2>Title</h2>
-        <p>contents</p>
+    <article className="sponsor_container" id={adsNow.id}>
+      <div>Sponsored</div>
+      <div className="sponsor_inner">
+        <img src={imgRoute+adsNow.img} alt="광고 이미지" />
+        <section>
+          <h2>{adsNow.title}</h2>
+          <p>{adsNow.contents}</p>
+        </section>
       </div>
     </article>
   );
