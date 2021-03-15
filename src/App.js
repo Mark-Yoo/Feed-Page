@@ -1,9 +1,15 @@
 import './App.scss';
-import FeedPage from './components';
+import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
+import FeedPage from './pages';
+import DetailPage from './pages/detail';
 
 function App() {
   return (
-    <FeedPage />
+    // <FeedPage />
+    <>
+      <Route exact path="/" component={FeedPage} />
+      <Route path="/:id" component={DetailPage} />
+    </>
   );
 }
 

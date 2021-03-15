@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const getList = (payload) => axios.get('https://problem.comento.kr/api/list', {params: payload});
+export const getList = (params) => axios.get('https://problem.comento.kr/api/list', {params: params});
 
-export const getAds = (payload) => axios.get('https://problem.comento.kr/api/ads', {params: payload});
+export const getAds = (params) => axios.get('https://problem.comento.kr/api/ads', {params: params});
 
 export const getCategory = () => axios.get('https://problem.comento.kr/api/category');
 
-export const getView = (id) => axios.get('https://problem.comento.kr/api/list', {params: {id: 1}});
+export const getView = (params) => axios.get('https://problem.comento.kr/api/view', {params: params});
