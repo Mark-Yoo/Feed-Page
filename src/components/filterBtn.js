@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getNewCategory } from '../modules/listCategory';
 import FilterModal from './filterModal';
+import './scss/filterBtn.scss';
 
 function FilterBtn() {
   const [visible, setVisible] = useState(false);
@@ -19,7 +20,7 @@ function FilterBtn() {
 
   return(
     <>
-      <button onClick={onOpen}>필터</button>
+      <button class="btn_filter" onClick={onOpen}>필터</button>
       {
         categoryLoading && visible && <FilterModal
         visible={visible}

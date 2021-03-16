@@ -1,12 +1,18 @@
 .container {
   display: flex;
-}
-.nav_container {
-  background: yellowgreen;
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-}
-.content_container {
-  flex-grow: 6;
+  .nav_container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 20px;
+  }
+  .content_container {
+    flex-grow: 6;
+    width: 60%;
+    .option_container {
+      display: flex;
+      margin: 20px;
+      justify-content: space-between;
+    }
+  }
 }

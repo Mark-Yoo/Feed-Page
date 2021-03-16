@@ -1,16 +1,41 @@
 .sponsor_container {
-  background-color: gold;
   margin: 20px;
-  padding: 10px; 
-  img {
-    width: 310px;
-    height: 179px;
+  padding: 20px;
+  border: 2px solid rgba(225, 228, 231, 0.9);
+  border-radius: 8px;
+  .sponsor {
+    color: rgb(173, 181, 189);
+    margin-bottom: 10px;
   }
   .sponsor_inner {
     display: flex;
-  }
-  h2 {
-    height: 30px;
+    flex-direction: row;
     overflow: hidden;
+    .sponsor_img {
+      width: 100%;
+      position: relative;
+      img {
+        width: 27vw;
+        height: 15vw;
+      }
+    }
+    .ads_content {
+      display: flex;
+      margin-left: 50px;
+      flex-direction: column;
+      min-width: 0;
+      white-space: nowrap;
+      
+      h2 {
+        height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      p {
+        height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
   }
 }

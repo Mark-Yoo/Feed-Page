@@ -5,7 +5,8 @@ const initialAds = {
   adsLoading: {
     GET_ADS: false,
   },
-  ads: null
+  totalAds: [],
+  ads: null,
 };
 
 const GET_MORE_ADS = 'listAds/GET_MORE_ADS';
@@ -30,15 +31,6 @@ export const getMoreAds = (payload) => async dispatch => {
   }
 }
 
-// function listAds(state = initialAds, action) {
-//   switch(action.type) {
-//     case "GET_MORE_ADS":
-//       return {...state};
-//     default:
-//       return state;
-//   }
-// }
-
 const listAds = handleActions(
   {
     [GET_MORE_ADS]: state => ({
@@ -54,9 +46,10 @@ const listAds = handleActions(
         ...state.adsLoading,
         GET_ADS: false
       },
+      totalAds: [...state.totalAds, ...action.payload.data],
       ads: action.payload
     }),
-    [GET_MORE_ADS_FAILURE]: (state, action) => ({
+    [GET_MORE_ADS_FAILURE]: (state) => ({
       ...state,
       adsLoading: {
         ...state.adsLoading,

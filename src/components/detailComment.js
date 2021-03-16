@@ -7,7 +7,7 @@ function DetailComment({ comment }) {
     <section className="comment_container" key={id}>
       <div>{user.name}</div>
       <p>{contents}</p>
-      <span>{created_at}</span>
+      <span>{created_at.substr(0, 10)}</span>
     </section>
     );
 }

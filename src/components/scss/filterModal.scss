@@ -58,6 +58,17 @@
           margin: 3px;
         }
       }
+      .button__save {
+        background-color: rgb(0, 200, 84);
+        color: white;
+        position:absolute;
+        border: none;
+        border-radius: 8px;
+        right: 25px;
+        bottom: 25px;
+        width: 7vw;
+        height: 3vw;
+      }
     }
   }
 }

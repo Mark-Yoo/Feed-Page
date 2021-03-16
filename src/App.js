@@ -5,10 +5,12 @@ import DetailPage from './pages/detail';
 
 function App() {
   return (
-    // <FeedPage />
     <>
-      <Route exact path="/" component={FeedPage} />
-      <Route path="/:id" component={DetailPage} />
+      <div class="dev__data">[03.16.2021] 유진혁</div>
+      <div>
+        <Route exact path="/" component={FeedPage} />
+        <Route path="/:id" component={DetailPage} />
+      </div>
     </>
   );
 }

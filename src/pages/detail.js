@@ -5,23 +5,23 @@ import DetailContent from '../components/detailContent';
 import { getViews } from '../modules/listDetail';
 import '../components/scss/detailPage.scss';
 
-function DetailPage({ match }) {
+function DetailPage({ match, history, location }) {
   const { view } = useSelector(state => state.listDetail);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (view) return;
     dispatch(getViews({id: +match.params.id}));
-  }, [view, dispatch]);
+  }, []);
 
   useEffect(() => {
-    console.log('match', match);
+    console.log('history', history);
+    console.log('location', location)
   }, [match]);
 
   return(
     <div className="detail_wrapper">
       {view?.data && <DetailContent content={view.data}/>}
-      <div className="comments_total">답변  
+      <div className="comments_total">{view?.data && '답변'}  
         <span className="comments_number">
         {view?.data.reply && view?.data.reply.length}
         </span>

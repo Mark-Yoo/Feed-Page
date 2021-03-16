@@ -7,6 +7,7 @@ const initialList = {
     CHANGE_CATID: false,
     CHANGE_ALIGN: false
   },
+  totalArray: [],
   list: null,
   params: {page: 1, ord: "asc", category: ["1", "2", "3"], limit: 10}
 }
@@ -88,6 +89,7 @@ const listItem = handleActions(
         ...state.listLoading,
         GET_LIST: false
       },
+      totalArray: [...state.totalArray, ...action.payload.data],
       list: action.payload
     }),
     [GET_MORE_LIST_FAILURE]: (state) => ({

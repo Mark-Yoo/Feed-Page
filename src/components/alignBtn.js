@@ -22,14 +22,20 @@ function AlignBtn() {
 
   return(
     <div className="alignbtn_container">
-      <label htmlFor="asc_btn active" onClick={onClick} id="asc">
-        <input className="asc_btn active" id="asc" type="checkbox" checked={orderNow === 'asc'}/>
-          오름차순
+      <div className="asc_wrapper wrapper">
+        <label htmlFor="asc_btn" onClick={onClick} id="asc">
+          <input className="asc_btn active" id="asc" type="checkbox" checked={orderNow === 'asc'}/>
+          <div className="customCheck"></div>
+            오름차순
         </label>
-      <label htmlFor="desc_btn" onClick={onClick} id="desc">
-        <input className="desc_btn" id="desc" type="checkbox" checked={orderNow === 'desc'}/>
-          내림차순
+      </div>
+      <div className="desc_wrapper wrapper">
+        <label htmlFor="desc_btn" onClick={onClick} id="desc">
+          <input className="desc_btn" id="desc" type="checkbox" checked={orderNow === 'desc'}/>
+          <div className="customCheck"></div>
+            내림차순
         </label>
+      </div>
     </div>
     )
 }

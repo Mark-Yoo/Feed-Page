@@ -32,7 +32,7 @@ function FilterModal(props) {
     onClose(e);
   }
   
-  useEffect(() => {dispatch(changeCategory(categoryChange))}, [categoryChange]);
+  useEffect(() => {dispatch(changeCategory(categoryChange))}, [categoryChange, dispatch]);
 
   return(
     <div className="modal_overlay" style={{display: visible}}>
@@ -43,7 +43,7 @@ function FilterModal(props) {
             <h2>필터</h2>
             {categoryList?.category && categoryList.category.map(item => <ModalCategory item={item} onChange={onChange} categoryChange={categoryChange}/>)}
           </div>
-          <button onClick={onSave}>저장</button>
+          <button className="button__save" onClick={onSave}>저장하기</button>
         </div>
       </div>
     </div>
