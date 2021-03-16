@@ -1,9 +1,42 @@
+.go_back_btn {
+  display: none;
+  @media screen and (max-width: 768px){
+    display: block;
+    position: sticky;
+    top: 0;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0 10px 10px rgb(243, 243, 243);
+    button {
+      background-color: #fff;
+      border: none;
+      span {
+        @media screen and (max-width: 768px){
+          content: '';
+          width: 15px;
+          height: 15px;
+          border-top: 5px solid #121212;
+          border-right: 5px solid #121212;
+          display: inline-block;
+          transform: rotate(225deg);
+          position: absolute;
+          top: 15px;
+          left: 25px;
+        } 
+    }
+    }
+  }
+}
 .detail_wrapper {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
   .comments_total {
     margin-left: 50px;
     margin-bottom: -10px;
+    @media screen and (max-width: 768px){
+      margin-left: 20px;
+    }
     .comments_number {
       margin-left: 10px;
       color: green;

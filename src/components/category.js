@@ -10,7 +10,7 @@ function Category({item, id}) {
       <article className="category_container" key={id}>
         <div className="category_info">
           <span className="category_name">{category_id === 1 ? "apple" : (category_id === 2 ? "banana" : "coconut")}</span>
-          <span className="category_id">{category_id}</span>
+          <span className="category_id">category ID: {category_id}</span>
         </div>
         <div className="user_info">
           <span className="user_id user__inner">{user_id}</span>

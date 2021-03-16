@@ -4,6 +4,11 @@
   border: 2px solid rgba(225, 228, 231, 0.9);
   padding: 20px;
   border-radius: 8px;
+  @media screen and (max-width: 768px){
+    margin: 20px 0;
+    border-radius: 0;
+    box-shadow: 0 10px 15px grey;
+  }
   .category_info {
     display: flex;
     justify-content: space-between;
@@ -24,6 +29,14 @@
     .user_id::after {
       content: " | ";
       color:rgba(127, 132, 138, 0.4);
+      @media screen and (max-width: 768px){
+        display: none;
+      }
+    }
+    .created_date {
+      @media screen and (max-width: 768px){
+        display: none;
+      }
     }
   }
   .category_post {

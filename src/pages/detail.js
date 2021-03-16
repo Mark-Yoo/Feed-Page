@@ -9,6 +9,10 @@ function DetailPage({ match, history, location }) {
   const { view } = useSelector(state => state.listDetail);
   const dispatch = useDispatch();
 
+  const backward = () => {
+    history.goBack();
+  }
+
   useEffect(() => {
     dispatch(getViews({id: +match.params.id}));
   }, []);
@@ -19,15 +23,20 @@ function DetailPage({ match, history, location }) {
   }, [match]);
 
   return(
-    <div className="detail_wrapper">
-      {view?.data && <DetailContent content={view.data}/>}
-      <div className="comments_total">{view?.data && '답변'}  
-        <span className="comments_number">
-        {view?.data.reply && view?.data.reply.length}
-        </span>
+    <>
+      <div className="go_back_btn">
+        <button onClick={backward}><span></span></button>
       </div>
-      {view?.data.reply && view?.data.reply.map(comment => <DetailComment comment={comment}/>)}
-    </div>
+      <div className="detail_wrapper">
+        {view?.data && <DetailContent content={view.data}/>}
+        <div className="comments_total">{view?.data && '답변'}  
+          <span className="comments_number">
+          {view?.data.reply && view?.data.reply.length}
+          </span>
+        </div>
+        {view?.data.reply && view?.data.reply.map(comment => <DetailComment comment={comment}/>)}
+      </div>
+    </>
   )
 }
 

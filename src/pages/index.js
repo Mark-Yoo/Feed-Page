@@ -74,7 +74,7 @@ function FeedPage() {
           <AlignBtn />
           <FilterBtn />
         </div>
-        {list?.data && ads?.data && totalArray.map((item, index) => index % count.current !== count.current - 1 ? <Category id={item.id} item={item} /> : <><Category id={item.id} item={item}/><Advertise id={'ad'+item.id} index={index} count={count.current} /></>)}
+        {list?.data && ads?.data && list?.data.map((item, index) => index % count.current !== count.current - 1 ? <Category id={item.id} item={item} /> : <><Category id={item.id} item={item}/><Advertise id={'ad'+item.id} index={index} count={count.current} /></>)}
         {!listLoading.GET_LIST && !adsLoading.GET_ADS && <div ref={targetRef} style={{height: '100px', width: '100px', backgroundColor: 'green'}}></div>}
       </div>
     </div>

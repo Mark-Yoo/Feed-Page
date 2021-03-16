@@ -5,6 +5,9 @@
     justify-content: center;
     flex-grow: 1;
     margin: 20px;
+    @media screen and (max-width: 768px){
+      display: none;
+    }
   }
   .content_container {
     flex-grow: 6;
@@ -13,6 +16,9 @@
       display: flex;
       margin: 20px;
       justify-content: space-between;
+      @media screen and (max-width: 768px){
+        margin: 20px 10px;
+      }
     }
   }
 }

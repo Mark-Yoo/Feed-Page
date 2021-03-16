@@ -5,9 +5,12 @@ function DetailComment({ comment }) {
   const {id, contents, created_at, user} = comment;
   return(
     <section className="comment_container" key={id}>
-      <div>{user.name}</div>
+      <div className="user_name">{user.name}</div>
       <p>{contents}</p>
-      <span>{created_at.substr(0, 10)}</span>
+      <div className="sub_info">
+        <span>{created_at.substr(0, 10)}</span>
+        <span className="user_email">{user.email}</span>
+      </div>
     </section>
     );
 }

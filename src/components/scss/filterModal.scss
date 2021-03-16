@@ -30,6 +30,10 @@
       transform: translateY(-50%);
       margin: 0 auto;
       padding: 40px 20px;
+      @media screen and (max-width: 768px){
+        width: 250px;
+        height: 275px;
+      }
       .modal__close {
         position: absolute;
         top: 40px;
@@ -68,6 +72,11 @@
         bottom: 25px;
         width: 7vw;
         height: 3vw;
+        @media screen and (max-width: 768px){
+          display: block;
+          width: 200px;
+          height: 30px;
+        }
       }
     }
   }
