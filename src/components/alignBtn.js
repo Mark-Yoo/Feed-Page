@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeOrder, getMoreList } from '../modules/listItem';
+import { changeOrder, emptyArray, getMoreList } from '../modules/listItem';
 import "./scss/alignBtn.scss";
 
 function AlignBtn() {
   const { params } = useSelector(state => state.listItem);
   const [orderNow, setOrderNow] = useState(params.ord);
-  const [orderChanged, setOrderChanged] = useState(false);
 
   const dispatch = useDispatch();
 
   const onClick = ({ target }) => {
     const order = target.id;
-    setOrderChanged(true);
     setOrderNow(order);
   }
 
-  useEffect(() => {if(orderChanged)dispatch(changeOrder(orderNow))}, [orderChanged, orderNow, dispatch]);
+  useEffect(() => {
+    dispatch(emptyArray());
+    dispatch(changeOrder(orderNow));
+  }, [orderNow, dispatch]);
 
-  useEffect(() => {if(orderChanged)dispatch(getMoreList(params))}, [orderChanged, params, dispatch]);
+  useEffect(() => {
+      dispatch(getMoreList(params));
+  }, [params, dispatch]);
 
   return(
     <div className="alignbtn_container">

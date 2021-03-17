@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCategory, getMoreList } from '../modules/listItem';
+import { changeCategory, emptyArray, getMoreList } from '../modules/listItem';
 import ModalCategory from './modalCategory';
 import "./scss/filterModal.scss";
 
@@ -28,6 +28,7 @@ function FilterModal(props) {
   }
 
   const onSave = (e) => {
+    dispatch(emptyArray());
     dispatch(getMoreList(params));
     onClose(e);
   }
