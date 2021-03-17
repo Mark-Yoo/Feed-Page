@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMoreList } from '../modules/listItem';
 import { getMoreAds } from '../modules/listAds';
@@ -8,10 +8,12 @@ import LoginBtn from '../components/loginButton';
 import AlignBtn from '../components/alignBtn';
 import FilterBtn from '../components/filterBtn';
 import "../components/scss/index.scss";
+import LoadingSpinner from '../components/loading';
 
 function FeedPage() {
   const {list, listLoading, params, totalArray} = useSelector(state => state.listItem);
   const {ads, adsLoading} = useSelector(state => state.listAds);
+  const [loading, setLoading] = useState(true);
   // count를 변경하면 광고의 배치를 바꿀 수 있습니다.
   // 광고는 현재 4번째 Category와 함께 렌더링 되므로 순서대로 5번째에 위치합니다. 
   const count = useRef(3);
@@ -39,11 +41,14 @@ function FeedPage() {
     dispatch(getMoreList(params));
   }, [params, list, dispatch]);
   
-
   useEffect(() => {
     if (ads) return;
     dispatch(getMoreAds({page: 1, limit: Math.floor(10 / count.current)}))
   }, [ads, dispatch]);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  })
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler);
@@ -53,18 +58,25 @@ function FeedPage() {
   })
 
   return (
-    <div className="container" >
-      <div className="nav_container">
-        <LoginBtn />
-      </div>
-      <div className="content_container">
-        <div className="option_container">
-          <AlignBtn />
-          <FilterBtn />
+    <>
+    {!loading ?(
+        <div className="container" >
+          <div className="nav_container">
+            <LoginBtn />
+          </div>
+          <div className="content_container">
+            <div className="option_container">
+              <AlignBtn />
+              <FilterBtn />
+            </div>
+            {totalArray?.map((item, index) => index % count.current !== count.current - 1 ? <Category id={item.id} item={item} key={'list-'+item.id}/> : <><Category id={item.id} item={item} key={'list.id'+item.id}/><Advertise id={'ad'+item.id} index={index} count={count.current} key={'ads-'+item.id}/></>)}
+          </div>
         </div>
-        {totalArray?.map((item, index) => index % count.current !== count.current - 1 ? <Category id={item.id} item={item} key={'list-'+item.id}/> : <><Category id={item.id} item={item} key={'list.id'+item.id}/><Advertise id={'ad'+item.id} index={index} count={count.current} key={'ads-'+item.id}/></>)}
-      </div>
-    </div>
+      ) : (
+        <LoadingSpinner />
+      )
+    }
+    </>
   );
 }
 

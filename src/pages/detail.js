@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DetailComment from '../components/detailComment';
 import DetailContent from '../components/detailContent';
+import LoadingSpinner from '../components/loading';
 import { getViews } from '../modules/listDetail';
 import '../components/scss/detailPage.scss';
 
-function DetailPage({ match, history, location }) {
+function DetailPage({ match, history }) {
   const { view } = useSelector(state => state.listDetail);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   const backward = () => {
@@ -14,17 +16,18 @@ function DetailPage({ match, history, location }) {
   }
 
   useEffect(() => {
-    dispatch(getViews({id: +match.params.id}));
+    setTimeout(() => setLoading(false), 1000)
   }, []);
 
   useEffect(() => {
-    console.log('history', history);
-    console.log('location', location)
-  }, [match]);
+    dispatch(getViews({id: +match.params.id}));
+  }, []);
 
   return(
     <>
-      <div className="go_back_btn">
+    {!loading ?
+      (
+      <><div className="go_back_btn">
         <button onClick={backward}><span></span></button>
       </div>
       <div className="detail_wrapper">
@@ -35,7 +38,10 @@ function DetailPage({ match, history, location }) {
           </span>
         </div>
         {view?.data.reply && view?.data.reply.map(comment => <DetailComment comment={comment}/>)}
-      </div>
+      </div></>
+      ) : (
+        <LoadingSpinner />
+      )}
     </>
   )
 }
