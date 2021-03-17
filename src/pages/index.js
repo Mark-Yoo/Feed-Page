@@ -16,8 +16,8 @@ function FeedPage() {
   // 광고는 현재 4번째 Category와 함께 렌더링 되므로 순서대로 5번째에 위치합니다. 
   const count = useRef(3);
   const currentPage = useRef(null);
-  const lastPage = useRef(null);
   const currentAdsPage = useRef(null);
+  const lastPage = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -26,13 +26,11 @@ function FeedPage() {
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
     currentPage.current = list?.current_page;
-    lastPage.current = list?.last_page;
     currentAdsPage.current = ads?.current_page;
+    lastPage.current = list?.last_page;
     if (scrollTop + clientHeight >= scrollHeight && !listLoading.GET_LIST && !adsLoading.GET_ADS && (currentPage.current !== lastPage.current)) {
-      console.log('success!', scrollTop, clientHeight);
-      console.log('currentPage:', currentPage, "lastPage: ", lastPage);
       dispatch(getMoreList({...params, page: currentPage.current + 1}));
-      dispatch(getMoreAds({page: currentAdsPage.current + 1, limit: Math.floor(10 / count.current) + 1}));
+      dispatch(getMoreAds({page: currentAdsPage.current + 1, limit: Math.floor(10 / count.current) + 2}));
     }
   })
   
