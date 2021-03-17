@@ -54,8 +54,6 @@ function FeedPage() {
     }
   })
 
-  
-  if (listLoading.GET_LIST && adsLoading.GET_ADS) return <div>로딩중...</div>
   return (
     <div className="container" >
       <div className="nav_container">
