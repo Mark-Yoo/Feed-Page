@@ -5,22 +5,26 @@ import "./scss/alignBtn.scss";
 
 function AlignBtn() {
   const { params } = useSelector(state => state.listItem);
+  const [orderChanged, setOrderChanged] = useState(false);
   const [orderNow, setOrderNow] = useState(params.ord);
 
   const dispatch = useDispatch();
 
   const onClick = ({ target }) => {
     const order = target.id;
+    setOrderChanged(true);
     setOrderNow(order);
   }
 
   useEffect(() => {
-    dispatch(emptyArray());
-    dispatch(changeOrder(orderNow));
+    if(orderChanged) {
+      dispatch(emptyArray());
+      dispatch(changeOrder(orderNow));
+    }
   }, [orderNow, dispatch]);
 
   useEffect(() => {
-      dispatch(getMoreList(params));
+    if(orderChanged)dispatch(getMoreList(params));
   }, [params, dispatch]);
 
   return(

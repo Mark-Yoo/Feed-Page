@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMoreList } from '../modules/listItem';
 import { getMoreAds } from '../modules/listAds';
@@ -17,21 +17,24 @@ function FeedPage() {
   const count = useRef(3);
   const currentPage = useRef(null);
   const lastPage = useRef(null);
+  const currentAdsPage = useRef(null);
 
   const dispatch = useDispatch();
 
-  const scrollHandler = () => {
+  const scrollHandler = useCallback(() => {
     const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
     currentPage.current = list?.current_page;
     lastPage.current = list?.last_page;
-    if (scrollTop + clientHeight >= scrollHeight && !listLoading.GET_LIST && !adsLoading.GET_ADS) {
+    currentAdsPage.current = ads?.current_page;
+    if (scrollTop + clientHeight >= scrollHeight && !listLoading.GET_LIST && !adsLoading.GET_ADS && (currentPage.current !== lastPage.current)) {
       console.log('success!', scrollTop, clientHeight);
       console.log('currentPage:', currentPage, "lastPage: ", lastPage);
       dispatch(getMoreList({...params, page: currentPage.current + 1}));
+      dispatch(getMoreAds({page: currentAdsPage.current + 1, limit: Math.floor(10 / count.current) + 1}));
     }
-  }
+  })
   
   useEffect(() => {
     if (list) return;
@@ -63,7 +66,7 @@ function FeedPage() {
           <AlignBtn />
           <FilterBtn />
         </div>
-        {list?.data && ads?.data && totalArray?.map((item, index) => index % count.current !== count.current - 1 ? <Category id={item.id} item={item} /> : <><Category id={item.id} item={item}/><Advertise id={'ad'+item.id} index={index} count={count.current} /></>)}
+        {totalArray?.map((item, index) => index % count.current !== count.current - 1 ? <Category id={item.id} item={item} key={'list-'+item.id}/> : <><Category id={item.id} item={item} key={'list.id'+item.id}/><Advertise id={'ad'+item.id} index={index} count={count.current} key={'ads-'+item.id}/></>)}
       </div>
     </div>
   );

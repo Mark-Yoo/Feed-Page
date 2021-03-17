@@ -11,7 +11,7 @@ function Advertise({ index, count, id }) {
   return(
     <>
     {adsNow &&
-      <article className="sponsor_container" id={adsNow.id} key={id}>
+      <article className="sponsor_container" id={adsNow.id}>
         <div className="sponsor">Sponsored</div>
         <div className="sponsor_inner">
           <div className="sponsor_img">
@@ -23,7 +23,7 @@ function Advertise({ index, count, id }) {
           </section>
         </div>
       </article>
-    }
+     }
     </>
   );
 }

@@ -42,7 +42,7 @@ function FilterModal(props) {
           {canClose && <button className="modal__close" onClick={close}></button>}
           <div className="category_wrapper">
             <h2>필터</h2>
-            {categoryList?.category && categoryList.category.map(item => <ModalCategory item={item} onChange={onChange} categoryChange={categoryChange}/>)}
+            {categoryList?.category && categoryList.category.map(item => <ModalCategory key={item.id} item={item} onChange={onChange} categoryChange={categoryChange}/>)}
           </div>
           <button className="button__save" onClick={onSave}>저장하기</button>
         </div>

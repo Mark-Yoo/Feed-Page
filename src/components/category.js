@@ -6,8 +6,8 @@ function Category({item, id}) {
   const {category_id, user_id, created_at, title, contents} = item;
 
   return(
-    <Link to={`/${id}`} test={"test"} className="link_route">
-      <article className="category_container" key={id}>
+    <Link to={`/${id}`} className="link_route">
+      <article className="category_container">
         <div className="category_info">
           <span className="category_name">{category_id === 1 ? "apple" : (category_id === 2 ? "banana" : "coconut")}</span>
           <span className="category_id">category ID: {category_id}</span>

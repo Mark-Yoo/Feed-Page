@@ -20,7 +20,7 @@ function FilterBtn() {
 
   return(
     <>
-      <button class="btn_filter" onClick={onOpen}>필터</button>
+      <button className="btn_filter" onClick={onOpen}>필터</button>
       {
         categoryLoading && visible && <FilterModal
         visible={visible}
