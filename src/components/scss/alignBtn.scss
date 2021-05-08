@@ -3,11 +3,12 @@
   .wrapper {
     position: relative;
     margin: 10px;
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 768px) {
       margin: 5px;
       font-size: 15px;
     }
-    .asc_btn, .desc_btn {
+    .asc_btn,
+    .desc_btn {
       display: none;
       position: relative;
     }
@@ -19,13 +20,20 @@
       border-radius: 50%;
       background-color: rgb(225, 228, 231);
       & :after {
-        content:"";
+        content: "";
         position: inline-block;
         display: none;
       }
     }
+    .cover_btn {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
-  & :hover input ~ .customCheck{
+  & :hover input ~ .customCheck {
     background-color: gray;
   }
   & :hover input:checked ~ .customCheck {

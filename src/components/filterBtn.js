@@ -1,37 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getNewCategory } from '../modules/listCategory';
-import FilterModal from './filterModal';
-import './scss/filterBtn.scss';
+import React, { useState, useEffect, useCallback, memo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getNewCategory } from "../modules/listCategory";
+import FilterModal from "./filterModal";
+import "./scss/filterBtn.scss";
 
 function FilterBtn() {
   const [visible, setVisible] = useState(false);
-  const {categoryList, categoryLoading} = useSelector(state => state.categoryItem);
+  const { categoryList, categoryLoading } = useSelector(
+    (state) => state.categoryItem
+  );
   const dispatch = useDispatch();
 
-  const onOpen = () => {
+  const onOpen = useCallback(() => {
     setVisible(true);
-  }
-  const onClose = () => {
+  }, []);
+
+  const onClose = useCallback(() => {
     setVisible(false);
-  }
+  }, []);
 
-  useEffect(() => { if(visible) dispatch(getNewCategory());}, [visible, dispatch])
+  useEffect(() => {
+    if (visible) dispatch(getNewCategory());
+  }, [visible, dispatch]);
 
-  return(
+  return (
     <>
-      <button className="btn_filter" onClick={onOpen}>필터</button>
-      {
-        categoryLoading && visible && <FilterModal
-        visible={visible}
-        canClose={true}
-        overlayClose={true}
-        onClose={onClose}
-        categoryList={categoryList}
+      <button className="btn_filter" onClick={onOpen}>
+        필터
+      </button>
+      {categoryLoading && visible && (
+        <FilterModal
+          visible={visible}
+          canClose={true}
+          overlayClose={true}
+          onClose={onClose}
+          categoryList={categoryList}
         />
-      }
+      )}
     </>
   );
 }
 
-export default FilterBtn;
+export default memo(FilterBtn);
