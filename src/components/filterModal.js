@@ -36,6 +36,8 @@ function FilterModal(props) {
 
   const onSave = useCallback(
     (e) => {
+      if (categoryChange.length === 0)
+        return alert("카테고리를 하나 이상 선택해주세요");
       dispatch(emptyArray());
       dispatch(getMoreList(params));
       onClose(e);
