@@ -3,7 +3,8 @@
   border-radius: 9px;
   margin: 20px 50px;
   padding: 20px;
-  @media screen and (max-width: 768px){
+  position: relative;
+  @media screen and (max-width: 768px) {
     margin: 20px 20px;
     border-radius: 0;
     border: 2px solid rgba(225, 228, 231, 0.8);
@@ -11,22 +12,22 @@
     border-right: none;
     padding: 20px 0;
   }
-  div {
+  .user_name,
+  .sub_info {
     color: rgba(142, 147, 152, 1);
     border-bottom: 2px solid rgba(225, 228, 231, 0.8);
     padding-bottom: 10px;
   }
   p {
-    @media screen and (max-width: 768px){
-
+    @media screen and (max-width: 768px) {
     }
   }
   .sub_info {
     display: flex;
     justify-content: space-between;
     span {
-      color:rgba(142, 147, 152, 0.7);
-      @media screen and (max-width: 768px){
+      color: rgba(142, 147, 152, 0.7);
+      @media screen and (max-width: 768px) {
         font-size: 13px;
       }
     }

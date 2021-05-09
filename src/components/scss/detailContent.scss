@@ -3,7 +3,8 @@
   border-radius: 9px;
   margin: 20px 50px;
   padding: 20px;
-  @media screen and (max-width: 768px){
+  position: relative;
+  @media screen and (max-width: 768px) {
     margin: 0 20px;
     margin-bottom: 30px;
     padding: 0 0 20px 0;
@@ -13,8 +14,8 @@
     border-right: none;
   }
   span {
-    color:rgba(142, 147, 152, 0.7);
-    @media screen and (max-width: 768px){
+    color: rgba(142, 147, 152, 0.7);
+    @media screen and (max-width: 768px) {
       font-size: 13px;
     }
   }
