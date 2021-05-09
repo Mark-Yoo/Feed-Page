@@ -1,5 +1,6 @@
 import React from "react";
 import "./scss/detailComment.scss";
+import CopyPreventModal from "./copyPreventModal";
 
 function DetailComment({ comment }) {
   const { id, contents, created_at, user } = comment;
@@ -11,6 +12,7 @@ function DetailComment({ comment }) {
         <span>{created_at.substr(0, 10)}</span>
         <span className="user_email">{user.email}</span>
       </div>
+      <CopyPreventModal />
     </section>
   );
 }
